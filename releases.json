@@ -1,0 +1,28 @@
+{
+  "appName": "易家佳",
+  "version": "3.11.1",
+  "webUrl": "https://bybitx.eu.cc/",
+  "android": {
+    "status": "available",
+    "version": "3.11.1",
+    "url": "https://mikey-dfl.github.io/static/yijiajia-3.11.1-android-webview.apk",
+    "size": "92.9 KiB",
+    "bytes": 95121,
+    "sha256": "1a9f539c2dcb0814649989eeb1be2993b8fbc458be36f592b34dc6197f93d81f",
+    "label": "轻量预览版",
+    "channel": "轻量预览版",
+    "minAndroid": "8.0"
+  },
+  "windows": {
+    "status": "available",
+    "version": "3.11.0",
+    "url": "https://mikey-download-hk-20261021.oss-cn-hongkong.aliyuncs.com/releases/3.11.0/yijiajia-3.11.0-windows-x64.exe",
+    "size": "63.9 MiB",
+    "bytes": 67040152,
+    "sha256": "f1112bbf45d07ac5e84fa30877018c057bb3c2016cc76c30cb77cba5aa2eca01"
+  },
+  "ios": {
+    "status": "coming-soon",
+    "url": null
+  }
+}
