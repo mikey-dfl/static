@@ -1,0 +1,44 @@
+name: Deploy full GitHub Pages mirror
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - site-bundle.tar.gz
+      - site-bundle.sha256
+      - .github/workflows/pages.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/configure-pages@v5
+      - name: Verify and unpack the static mirror
+        run: |
+          sha256sum -c site-bundle.sha256
+          mkdir _site
+          tar -xzf site-bundle.tar.gz -C _site --no-same-owner --no-same-permissions
+          test -f _site/h5/index.html
+          test -f _site/web/index.html
+          test -f _site/admin/index.html
+          test -f _site/download/index.html
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+      - name: Deploy GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
